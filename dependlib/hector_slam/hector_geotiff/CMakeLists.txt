@@ -9,7 +9,7 @@ find_package(catkin REQUIRED COMPONENTS hector_map_tools hector_nav_msgs nav_msg
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
-find_package(Qt4 4.6 COMPONENTS QtCore QtGui REQUIRED)
+find_package(Qt5 COMPONENTS Core Gui Widgets REQUIRED)
 
 # Find Eigen3 (from http://wiki.ros.org/jade/Migration)
 find_package(Eigen3)
@@ -24,7 +24,7 @@ else()
   set(EIGEN3_INCLUDE_DIRS ${EIGEN3_INCLUDE_DIR})
 endif()
 
-include(${QT_USE_FILE})
+#include(${QT_USE_FILE})
 
 
 ## Uncomment this if the package has a setup.py. This macro ensures
@@ -85,7 +85,7 @@ include_directories(
 )
 
 add_library(geotiff_writer src/geotiff_writer/geotiff_writer.cpp)
-target_link_libraries(geotiff_writer ${catkin_LIBRARIES} ${QT_LIBRARIES})
+target_link_libraries(geotiff_writer ${catkin_LIBRARIES} Qt5::Gui Qt5::Core Qt5::Widgets)
 add_dependencies(geotiff_writer ${catkin_EXPORTED_TARGETS})
 
 add_executable(geotiff_saver src/geotiff_saver.cpp)

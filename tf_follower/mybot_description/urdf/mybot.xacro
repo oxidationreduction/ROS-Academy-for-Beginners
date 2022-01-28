@@ -110,10 +110,10 @@
 <transmission name="left_trans">
   <type>transmission_interface/SimpleTransmission</type>
   <joint name="mybot_left_wheel_hinge"> 
-  	<hardwareInterface>EffortJointInterface</hardwareInterface>
+  	<hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
   </joint>
   <actuator name="leftMotor">
-    <hardwareInterface>EffortJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>
@@ -153,10 +153,10 @@
 <transmission name="right_trans">
   <type>transmission_interface/SimpleTransmission</type>
   <joint name="mybot_right_wheel_hinge">
-  <hardwareInterface>EffortJointInterface</hardwareInterface>
+  <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
    </joint>
   <actuator name="rightMotor">
-    <hardwareInterface>EffortJointInterface</hardwareInterface>
+    <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
     <mechanicalReduction>1</mechanicalReduction>
   </actuator>
 </transmission>

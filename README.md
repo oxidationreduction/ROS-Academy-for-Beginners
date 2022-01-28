@@ -50,7 +50,7 @@ $ git clone -b melodic https://github.com/DroidAITech/ROS-Academy-for-Beginners.
 2. 安装教学包所需的依赖
 ```sh
 $ cd ~/catkin_ws
-$ rosdep install --from-paths src --ignore-src --rosdistro=melodic -y
+$ rosdep install --from-paths src --ignore-src --rosdistro=noetic -y
 ```
 
 3. 编译并刷新环境
@@ -61,14 +61,14 @@ $ source ~/catkin_ws/devel/setup.bash
 
 4. 升级gazebo
 
-(1). 建议在**本地Ubuntu 18.04**下运行仿真程序。目前Gazebo模拟器的**兼容性**是一大问题，在虚拟机或配置较低的电脑上可能无法运行。**如果你的显卡是N卡，建议安装Ubuntu下的显卡驱动**。
+(1). 建议在**本地Ubuntu 20.04**下运行仿真程序。目前Gazebo模拟器的**兼容性**是一大问题，在虚拟机或配置较低的电脑上可能无法运行。**如果你的显卡是N卡，建议安装Ubuntu下的显卡驱动**。
 
-(2). 运行Gazebo仿真程序`robot_sim_demo`前，请将Gazebo升级到9.x版本以上（**推荐9.14版本**）。
+(2). 运行Gazebo仿真程序`robot_sim_demo`前，请将Gazebo升级到9.x版本以上（**20.04下是11.x**）。
 
 
   查看Gazebo版本方法
   ```sh
-  $ gazebo -v   #确认9.0以上，推荐9.14
+  $ gazebo -v   # Ubuntu 20.04下是gazebo 11.x
   ```
 
   升级方法
@@ -77,7 +77,7 @@ $ source ~/catkin_ws/devel/setup.bash
   $ sudo sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
   $ wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add -
   $ sudo apt-get update
-  $ sudo apt-get install gazebo9
+  $ sudo apt-get install gazebo11
   ```
 
 系统更新
@@ -92,6 +92,32 @@ $ source ~/catkin_ws/devel/setup.bash
 
 ```
 roslaunch robot_sim_demo robot_spawn.launch
+```
+
+6. 启动Slam导航示例
+
+第一步，新开终端，首先启动仿真环境
+
+```
+roslaunch robot_sim_demo robot_spawn.launch
+```
+
+第二步，新开终端，启动slam
+
+```
+roslaunch slam_sim_demo gampping_demo.launch
+```
+
+第三步，新开终端，启动navigation
+
+```
+roslaunch navigation_sim_demo navigation_demo.launch 
+```
+
+第四步，新开终端，启动rviz
+
+```
+roslaunch navigation_sim_demo view_navigation.launch 
 ```
 
 ---
